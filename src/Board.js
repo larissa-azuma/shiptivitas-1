@@ -3,6 +3,7 @@ import Dragula from 'dragula';
 import 'dragula/dist/dragula.css';
 import Swimlane from './Swimlane';
 import './Board.css';
+import dragula from 'dragula';
 
 export default class Board extends React.Component {
   constructor(props) {
@@ -14,7 +15,20 @@ export default class Board extends React.Component {
         inProgress: clients.filter(client => client.status && client.status === 'in-progress'),
         complete: clients.filter(client => client.status && client.status === 'complete'),
       }
-    }
+    };
+//Create a Dragula instance
+this.drake = dragula([document.querySelectorAll('.Swimlane-dragColumn')],{
+
+});
+
+this.drake.on('drop',(el,target)=> {
+  // Access data of the dragged client and its origin
+// const draggedClientData = ;
+// const draggedFromColumn =
+
+});
+
+
     this.swimlanes = {
       backlog: React.createRef(),
       inProgress: React.createRef(),
